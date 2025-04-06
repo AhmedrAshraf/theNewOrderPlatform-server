@@ -8,7 +8,8 @@ app.use(cors())
 app.use(express.json()); 
 
 app.get('/api/success-payment', async(req, res)=>{
-    const {solutionId, totalPrice} = req.body
+    const {solution_id, totalprice, sellerId} = req.query
+    console.log("🚀 ~ app.get ~ req.body:", req.body)
     const sessionId = req.query.session_id;
     if (!sessionId) {
       return res.status(400).send('Missing session_id');
@@ -19,7 +20,8 @@ app.get('/api/success-payment', async(req, res)=>{
     console.log("🚀 ~ app.post ~ session:", session.status)
     
     const uid = session.metadata.uid;
-    res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solutionId}&totalPrice=${totalPrice}}`)
+
+    res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
     // res.redirect(`https://scoopn-clean.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}`
 
 } catch (error) {

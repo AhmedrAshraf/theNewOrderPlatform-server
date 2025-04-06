@@ -8,10 +8,10 @@ app.use(cors())
 app.use(express.json()); 
 
 app.post('/api/create-checkout-session', async(req, res)=>{
-    const {uid, customerEmail, totalprice, solution_id} = req.body
+    const {uid, customerEmail, totalprice, solution_id ,sellerId} = req.body
     console.log(req.body);
 
-    if(!totalprice && !uid && !customerEmail ,!solution_id){
+    if(!totalprice && !uid && !customerEmail ,!solution_id, !sellerId){
         console.log("Invalid fields");
         return
     }
@@ -30,7 +30,7 @@ app.post('/api/create-checkout-session', async(req, res)=>{
           },
         ],
         mode: 'payment',
-        success_url: `http://localhost:8100/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}`,
+        success_url: `http://localhost:8100/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}`,
         cancel_url: 'http://localhost:5173/cancel',
 
         customer_email: `${customerEmail}`,
