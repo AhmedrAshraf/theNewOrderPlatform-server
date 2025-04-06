@@ -8,10 +8,10 @@ app.use(cors())
 app.use(express.json()); 
 
 app.post('/api/create-checkout-session', async(req, res)=>{
-    const {uid, customerEmail, totalprice, solution_id ,sellerId} = req.body
+    const {uid, customerEmail, totalprice, solution_id ,sellerId, messageId} = req.body
     console.log(req.body);
 
-    if(!totalprice && !uid && !customerEmail ,!solution_id, !sellerId){
+    if(!totalprice && !uid && !customerEmail ,!solution_id, !sellerId, !messageId){
         console.log("Invalid fields");
         return
     }
@@ -31,7 +31,7 @@ app.post('/api/create-checkout-session', async(req, res)=>{
         ],
         mode: 'payment',
         // success_url: `http://localhost:8100/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}`,
-        success_url: `https://the-new-order-platform-server.vercel.app/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}`,
+        success_url: `https://the-new-order-platform-server.vercel.app/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}`,
         cancel_url: 'https://the-new-order-platform.vercel.app/cancel',
 
         customer_email: `${customerEmail}`,

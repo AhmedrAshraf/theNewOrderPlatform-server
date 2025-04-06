@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.json()); 
 
 app.get('/api/success-payment', async(req, res)=>{
-    const {solution_id, totalprice, sellerId} = req.query
+    const {solution_id, totalprice, sellerId, messageId} = req.query
     console.log("🚀 ~ app.get ~ req.body:", req.body)
     const sessionId = req.query.session_id;
     if (!sessionId) {
@@ -21,7 +21,7 @@ app.get('/api/success-payment', async(req, res)=>{
     const uid = session.metadata.uid;
 
     // res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
-    res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
+    res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}`)
 
 } catch (error) {
     console.error('Error retrieving session:', error);
