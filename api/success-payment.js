@@ -21,7 +21,7 @@ app.get('/api/success-payment', async(req, res)=>{
     const uid = session.metadata.uid;
 
     // res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
-    res.redirect(`https://the-new-order-platform.vercel/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
+    res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
 
 } catch (error) {
     console.error('Error retrieving session:', error);
