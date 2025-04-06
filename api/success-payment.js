@@ -18,11 +18,10 @@ app.get('/api/success-payment', async(req, res)=>{
  try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     console.log("🚀 ~ app.post ~ session:", session.status)
-    
     const uid = session.metadata.uid;
 
-    res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
-    // res.redirect(`https://scoopn-clean.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}`
+    // res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
+    res.redirect(`https://the-new-order-platform.vercel/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
 
 } catch (error) {
     console.error('Error retrieving session:', error);
