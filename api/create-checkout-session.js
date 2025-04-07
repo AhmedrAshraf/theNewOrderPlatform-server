@@ -11,7 +11,7 @@ app.post('/api/create-checkout-session', async(req, res)=>{
     const {uid, customerEmail, totalprice, solution_id ,sellerId, messageId, solution, proposal} = req.body
     console.log(req.body);
 
-    if(!totalprice && !uid && !customerEmail ,!solution_id, !sellerId){
+    if (!totalprice || !uid || !customerEmail || !solution_id || !sellerId) {
         console.log("Invalid fields");
         return
     }
