@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.json()); 
 
 app.get('/api/success-payment', async(req, res)=>{
-    const {solution_id, totalprice, sellerId, messageId} = req.query
+    const {solution_id, totalprice, sellerId, messageId, solution} = req.query
     console.log("🚀 ~ app.get ~ req.body:", req.body)
     const sessionId = req.query.session_id;
     if (!sessionId) {
@@ -19,9 +19,11 @@ app.get('/api/success-payment', async(req, res)=>{
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     console.log("🚀 ~ app.post ~ session:", session.status)
     const uid = session.metadata.uid;
+    let parsedSolution;
+    parsedSolution = JSON.parse(decodeURIComponent(solution));
 
     // res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
-    res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}`)
+    res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}&solution=${encodeURIComponent(JSON.stringify(parsedSolution))}`)
 
 } catch (error) {
     console.error('Error retrieving session:', error);
