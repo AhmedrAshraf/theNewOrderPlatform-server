@@ -31,7 +31,8 @@ app.post('/api/create-checkout-session', async(req, res)=>{
         ],
         mode: 'payment',
         // success_url: `http://localhost:8100/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}`,
-        success_url: `https://the-new-order-platform-server.vercel.app/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}&solution=${encodeURIComponent(JSON.stringify(solution))}&proposal=${encodeURIComponent(JSON.stringify(proposal))}`,
+        // success_url: `https://the-new-order-platform-server.vercel.app/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}&solution=${encodeURIComponent(JSON.stringify(solution))}&proposal=${encodeURIComponent(JSON.stringify(proposal))}`,
+        success_url: `https://the-new-order-platform-server.vercel.app/api/success-payment?session_id={CHECKOUT_SESSION_ID}&solution_id=${solution_id}&totalprice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}&solution=${encodeURIComponent(JSON.stringify(parsedSolution || {}))}&proposal=${encodeURIComponent(JSON.stringify(parsedProposal || {}))}`);
         cancel_url: 'https://the-new-order-platform.vercel.app/cancel',
 
         customer_email: `${customerEmail}`,
