@@ -129,7 +129,7 @@ app.post("/api/send-email", async (req, res) => {
                                             3. Find your solution and click "Access"
                                         </p>
                                         <div style="margin-top: 15px; text-align: center;">
-                                            <a href="#" style="display: inline-block; padding: 10px 20px; background-color: #00d9c0; color: white; text-decoration: none; border-radius: 4px; font-weight: 500;">Go to Dashboard</a>
+                                            <a href="https://the-new-order-platform.vercel.app/dashboard" style="display: inline-block; padding: 10px 20px; background-color: #00d9c0; color: white; text-decoration: none; border-radius: 4px; font-weight: 500;">Go to Dashboard</a>
                                         </div>
                                     </td>
                                 </tr>
