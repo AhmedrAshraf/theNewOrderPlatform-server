@@ -32,7 +32,7 @@ app.get('/api/success-payment', async(req, res)=>{
     }
 
     // res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
-    res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}&messageId=${messageId || 'null'}&solution=${encodeURIComponent(JSON.stringify(parsedSolution || {}))}&proposal=${encodeURIComponent(JSON.stringify(parsedProposal || {}))}`);
+    res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}&messageId=${messageId || null}&solution=${encodeURIComponent(JSON.stringify(parsedSolution || {}))}&proposal=${encodeURIComponent(JSON.stringify(parsedProposal || {}))}`);
 } catch (error) {
     console.error('Error retrieving session:', error);
     res.status(500).send('Error processing payment');
