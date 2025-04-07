@@ -42,7 +42,7 @@ app.post("/api/send-email", async (req, res) => {
 
       const mailOptions = {
         from: `Your Marketplace <${process.env.EMAIL_USER || "trustmuhammadimedical@gmail.com"}>`,
-        to:  "ahmedr.0331@gmail.com", // In production, use customer's email
+        to:  order?.email, // In production, use customer's email
         subject: `Order Confirmation #${order.id}`,
         html: `
           <!DOCTYPE html>
