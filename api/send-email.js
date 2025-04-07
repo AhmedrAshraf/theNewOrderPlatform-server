@@ -27,7 +27,7 @@ app.post("/api/send-email", async (req, res) => {
             const formattedPrice = new Intl.NumberFormat("en-US", {
               style: "currency",
               currency: "USD",
-            }).format(order.amount / 100) // Assuming amount is in cents
+            }).format(order.amount / 100)
     
             const transporter = nodemailer.createTransport({
            host: "smtp.gmail.com",
@@ -42,7 +42,7 @@ app.post("/api/send-email", async (req, res) => {
 
       const mailOptions = {
         from: `Your Marketplace <${process.env.EMAIL_USER || "trustmuhammadimedical@gmail.com"}>`,
-        to:  order?.email, // In production, use customer's email
+        to:  order?.email,
         subject: `Order Confirmation #${order.id}`,
         html: `
           <!DOCTYPE html>
