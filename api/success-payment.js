@@ -21,10 +21,15 @@ app.get('/api/success-payment', async(req, res)=>{
     const uid = session.metadata.uid;
 
     let parsedSolution;
+
+    if(solution){
     parsedSolution = JSON.parse(decodeURIComponent(solution));
+    }
 
     let parsedProposal
+    if(proposal){
     parsedProposal =  JSON.parse(decodeURIComponent(proposal))
+    }
 
     // res.redirect(`http://localhost:5173/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}`)
     res.redirect(`https://the-new-order-platform.vercel.app/success?status=${session.status}&uid=${uid}&sessionId=${sessionId}&solutionId=${solution_id}&totalPrice=${totalprice}&sellerId=${sellerId}&messageId=${messageId}&solution=${encodeURIComponent(JSON.stringify(parsedSolution))}&proposal=${encodeURIComponent(JSON.stringify(parsedProposal))}`)
