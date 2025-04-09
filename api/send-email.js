@@ -96,10 +96,10 @@ function getEmailHTML({ order, solution, sellerName, solutionTitle, solutionDesc
             </p>
           </div>
        <a href="${order.solution.bluePrint}" 
-   style="display: inline-block; padding: 8px 12px; background-color: #0369a1; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;"
-   download="${order.solution.bluePrint.split('/').pop() || 'blueprint'}">
-    Download
-</a>
+        style="display: inline-block; padding: 8px 12px; background-color: #0369a1; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;"
+        download="${order.solution.bluePrint.split('/').pop() || 'blueprint'}">
+        Download
+        </a>
 
         </div>
       </div>
@@ -127,7 +127,7 @@ function getEmailHTML({ order, solution, sellerName, solutionTitle, solutionDesc
           <p style="color:#475569;font-size:16px;margin:10px 0 0;">Your order is confirmed and being processed.</p>
           <p style="font-size:16px;margin:5px 0 20px;">Order #${order.id} • ${orderDate}</p>
           <p style="font-size: 16px; margin: 5px 0 20px;">
-            <a href="https://the-new-order-platform.vercel.app/order${order.id}" style="color: #0369a1; text-decoration: none;">
+            <a href="https://the-new-order-platform.vercel.app/order/${order.id}" style="color: #0369a1; text-decoration: none;">
               Go to your order history to download the blueprint
             </a>
           </p>
