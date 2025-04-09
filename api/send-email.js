@@ -128,7 +128,7 @@ function getEmailHTML({ order, solution, sellerName, solutionTitle, solutionDesc
           <p style="font-size:16px;margin:5px 0 20px;">Order #${order.id} • ${orderDate}</p>
           <p style="font-size: 16px; margin: 5px 0 20px;">
             <a href="https://the-new-order-platform.vercel.app/order/${order.id}" style="color: #0369a1; text-decoration: none;">
-              Go to your order history to download the blueprint
+              Go to your order history to download the blueprint: <span style="font-weight:700;">https://the-new-order-platform.vercel.app/order/${order.id}</span>
             </a>
           </p>
 
