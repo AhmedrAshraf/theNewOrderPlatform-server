@@ -32,9 +32,10 @@ app.post("/api/send-email", async (req, res) => {
   }).format(order.amount / 100);
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    service: 'Gmail', 
+    // host: "smtp.gmail.com",
+    // port: 587,
+    // secure: false,
     auth: {
       user: process.env.EMAIL_USER || "trustmuhammadimedical@gmail.com",
       pass: process.env.EMAIL_PASSWORD || "fxjqiyaquedqyyjj",
